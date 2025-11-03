@@ -3,7 +3,7 @@ package co.edu.udem.ejemplodockercompose.service;
 import co.edu.udem.ejemplodockercompose.model.Estudiante;
 import co.edu.udem.ejemplodockercompose.repository.EstudianteRepository;
 import org.springframework.stereotype.Service;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
@@ -22,4 +22,10 @@ public class EstudianteService {
     public Estudiante create(Estudiante estudiante) {
         return estudianteRepository.save(estudiante);
     }
+
+    @Transactional
+    public void deleteById(Long id) {
+        estudianteRepository.deleteById(id);
+    }
+
 }
